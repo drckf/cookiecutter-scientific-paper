@@ -1,5 +1,7 @@
 # {{ cookiecutter.paper_title }}
 
+[![Build Status](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/workflows/Build%20Paper/badge.svg)](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions)
+[![Tests](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/workflows/Test%20Package/badge.svg)](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions)
 [![Paper](https://img.shields.io/badge/paper-GitHub%20Pages-blue)](https://{{ cookiecutter.github_username }}.github.io/{{ cookiecutter.project_slug }})
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
 [![License](https://img.shields.io/badge/License-{{ cookiecutter.open_source_license | replace("-", "--") }}-blue.svg)](https://opensource.org/licenses/{{ cookiecutter.open_source_license }})
