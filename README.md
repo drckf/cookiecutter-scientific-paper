@@ -1,7 +1,7 @@
 # Cookiecutter Scientific Paper
 
-[![GitHub](https://img.shields.io/github/license/yourusername/cookiecutter-scientific-paper)](LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/yourusername/cookiecutter-scientific-paper)](https://github.com/yourusername/cookiecutter-scientific-paper/issues)
+[![GitHub](https://img.shields.io/github/license/drckf/cookiecutter-scientific-paper)](LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/drckf/cookiecutter-scientific-paper)](https://github.com/drckf/cookiecutter-scientific-paper/issues)
 [![Cookiecutter](https://img.shields.io/badge/built%20with-Cookiecutter-ff69b4.svg)](https://github.com/cookiecutter/cookiecutter)
 
 A [cookiecutter](https://github.com/cookiecutter/cookiecutter) template for scientific papers that embraces open science principles and collaborative GitHub-based workflows.
