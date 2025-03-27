@@ -1,0 +1,72 @@
+name: Build Paper
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'paper/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'paper/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r .github/workflows/requirements-paper.txt
+          
+      - name: Setup Pandoc
+        uses: r-lib/actions/setup-pandoc@v2
+        with:
+          pandoc-version: '2.19.2'
+          
+      - name: Build HTML
+        run: |
+          cd paper
+          pandoc paper.md \
+            --standalone \
+            --bibliography references.bib \
+            --citeproc \
+            --mathjax \
+            --toc \
+            --output paper.html \
+            --metadata title="${{ cookiecutter.paper_title }}"
+            
+      - name: Build PDF
+        run: |
+          cd paper
+          pandoc paper.md \
+            --standalone \
+            --bibliography references.bib \
+            --citeproc \
+            --pdf-engine=xelatex \
+            --output paper.pdf \
+            --metadata title="${{ cookiecutter.paper_title }}"
+            
+      - name: Setup GitHub Pages
+        if: github.event_name != 'pull_request'
+        run: |
+          mkdir -p _site
+          cp paper/paper.html _site/index.html
+          cp paper/paper.pdf _site/paper.pdf
+          cp -r paper/figures _site/figures || true
+          echo "paper/" > _site/.gitignore
+          
+      - name: Deploy to GitHub Pages
+        if: github.event_name != 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: _site
+          branch: gh-pages

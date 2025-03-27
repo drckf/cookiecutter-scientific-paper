@@ -1,0 +1,15 @@
+{
+  "project_name": "Scientific Paper Template",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-').replace('_', '-') }}",
+  "package_name": "{{ cookiecutter.project_slug.replace('-', '_') }}",
+  "project_short_description": "A research paper with reproducible code and analysis",
+  "author_name": "Your Name",
+  "author_email": "your.email@example.com",
+  "author_orcid": "0000-0000-0000-0000",
+  "affiliation": "Your Institution",
+  "open_source_license": ["MIT", "BSD-3-Clause", "CC-BY-4.0", "GPL-3.0", "Apache-2.0"],
+  "github_username": "yourusername",
+  "paper_title": "Your Paper Title",
+  "paper_keywords": "science, research, open-science",
+  "year": "{% now 'utc', '%Y' %}"
+}

@@ -1,0 +1,23 @@
+{
+  "title": "{{ cookiecutter.paper_title }}",
+  "description": "{{ cookiecutter.project_short_description }}",
+  "creators": [
+    {
+      "name": "{{ cookiecutter.author_name }}",
+      "affiliation": "{{ cookiecutter.affiliation }}",
+      "orcid": "{{ cookiecutter.author_orcid }}"
+    }
+  ],
+  "keywords": [
+    {% for keyword in cookiecutter.paper_keywords.split(',') %}
+      "{{ keyword.strip() }}"{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ],
+  "license": {
+    "id": "{{ cookiecutter.open_source_license }}"
+  },
+  "publication_date": "{{ cookiecutter.year }}-01-01",
+  "access_right": "open",
+  "upload_type": "publication",
+  "publication_type": "article"
+}
