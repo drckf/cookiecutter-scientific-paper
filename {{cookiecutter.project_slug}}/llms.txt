@@ -1,0 +1,33 @@
+# {{ cookiecutter.paper_title }}
+
+> {{ cookiecutter.project_short_description }}. This repository contains a scientific paper, associated code for a reusable Python package, analysis scripts, and dataset.
+
+This repository follows a standardized structure for scientific papers published via GitHub. It contains:
+
+- The full manuscript in markdown format with LaTeX math support
+- A Python package implementing methods described in the paper
+- Analysis code that reproduces all figures and results
+- Raw and processed datasets with documentation
+
+## Paper
+
+- [Main manuscript](paper/paper.md): The complete scientific paper with all sections, equations, and in-text citations
+- [References](paper/references.bib): Bibliography in BibTeX format
+- [Figures](paper/figures/): Generated visualizations and diagrams referenced in the paper
+
+## Code
+
+- [Python package](src/{{ cookiecutter.package_name }}/__init__.py): Reusable implementation of the methods introduced in this paper
+- [Analysis scripts](code/analysis/): Code that reproduces all results and figures in the paper
+- [Experiments](code/experiments/): Scripts used to run the experiments described in the paper
+
+## Data
+
+- [Dataset documentation](data/README.md): Information about the datasets, including sources and processing steps
+- [Processed data](data/processed/): Clean, analysis-ready datasets used to generate results
+
+## Optional
+
+- [Package documentation](src/README.md): Detailed API documentation for the Python package
+- [Contributing guidelines](CONTRIBUTING.md): Instructions for submitting improvements or extensions
+- [Test suite](src/tests/): Tests verifying the correctness of the implementation

@@ -1,0 +1,48 @@
+name: Update LLM-Friendly Content
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'paper/**'
+      - 'code/**'
+      - 'data/README.md'
+      - 'src/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install beautifulsoup4 markdown
+          
+      - name: Generate/Update Markdown Versions
+        run: |
+          # Create _site directory for GitHub Pages with .md versions
+          mkdir -p _site
+          
+          # Process any HTML files to create clean .md versions
+          python .github/scripts/html_to_markdown.py
+          
+          # Copy all markdown files to _site with .md extension
+          find paper -name "*.md" -exec cp {} _site/{}.md \;
+          
+          # Ensure the llms.txt file is in the root of the deployed site
+          cp llms.txt _site/llms.txt
+          
+      - name: Deploy Markdown Versions
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: _site
+          branch: gh-pages
+          target-folder: md
