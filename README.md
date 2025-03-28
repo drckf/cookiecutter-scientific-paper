@@ -5,7 +5,7 @@
 [![Cookiecutter](https://img.shields.io/badge/built%20with-Cookiecutter-ff69b4.svg)](https://github.com/cookiecutter/cookiecutter)
 
 
-![Reimagining Scientific Publishing: A GitHub-Based Open Science Model](images/hero-image.png)
+![Scientific Publishing for the AI Era](images/hero-image.png)
 
 
 A [cookiecutter](https://github.com/cookiecutter/cookiecutter) template for scientific papers that embraces open science principles and collaborative GitHub-based workflows.
@@ -26,6 +26,8 @@ This template creates a comprehensive project structure with:
 - **Comprehensive**: Covers paper writing, code development, and data management
 - **Citable**: Includes proper citation metadata and DOI integration
 - **Collaborative**: Designed for easy contributions and peer review through GitHub
+- **Automated Distribution**: Built-in system for distributing papers without traditional journals
+
 
 ## Requirements
 
