@@ -1,0 +1,64 @@
+name: Distribute Paper
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Paper version (e.g., v1.0.0)'
+        required: true
+        default: 'v1.0.0'
+      is_major_update:
+        description: 'Is this a major update?'
+        required: true
+        type: boolean
+        default: false
+
+jobs:
+  build_and_distribute:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml requests markdown2 feedgen
+          
+      - name: Generate distribution files
+        id: generate
+        run: |
+          python .github/scripts/generate_distribution.py \
+            --version "${{ github.event.inputs.version || github.event.release.tag_name }}" \
+            --is-major "${{ github.event.inputs.is_major_update || github.event.release.tag_name != '' }}"
+          
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: gh-pages
+          target-folder: dist
+          
+      # Optional: Post to social media if configured
+      - name: Post to social media
+        if: ${{ github.event.inputs.is_major_update == 'true' || github.event.release.tag_name != '' }}
+        env:
+          MASTODON_TOKEN: ${{ secrets.MASTODON_TOKEN }}
+          MASTODON_INSTANCE: ${{ secrets.MASTODON_INSTANCE }}
+        run: |
+          if [ -n "$MASTODON_TOKEN" ] && [ -n "$MASTODON_INSTANCE" ]; then
+            python .github/scripts/post_to_social.py
+          else
+            echo "Social media posting skipped (tokens not configured)"
+          fi
+          
+      # Submit to scientific paper registry
+      - name: Submit to registry
+        run: |
+          python .github/scripts/submit_to_registry.py
