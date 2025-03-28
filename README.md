@@ -4,6 +4,10 @@
 [![GitHub issues](https://img.shields.io/github/issues/drckf/cookiecutter-scientific-paper)](https://github.com/drckf/cookiecutter-scientific-paper/issues)
 [![Cookiecutter](https://img.shields.io/badge/built%20with-Cookiecutter-ff69b4.svg)](https://github.com/cookiecutter/cookiecutter)
 
+
+![Reimagining Scientific Publishing: A GitHub-Based Open Science Model](images/hero-image.png)
+
+
 A [cookiecutter](https://github.com/cookiecutter/cookiecutter) template for scientific papers that embraces open science principles and collaborative GitHub-based workflows.
 
 This template creates a comprehensive project structure with:
