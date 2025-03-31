@@ -34,8 +34,8 @@ jobs:
           # Process any HTML files to create clean .md versions
           python .github/scripts/html_to_markdown.py
           
-          # Copy all markdown files to _site with .md extension
-          find paper -name "*.md" -exec cp {} _site/{}.md \;
+          # Copy all markdown files to _site preserving their filenames
+          find paper -name "*.md" -exec sh -c 'cp "$0" _site/$(basename "$0")' {} \;
           
           # Ensure the llms.txt file is in the root of the deployed site
           cp llms.txt _site/llms.txt

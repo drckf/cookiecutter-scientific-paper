@@ -67,13 +67,15 @@ The following types of contributions are especially valuable:
 If you use this work in your research, please cite:
 
 ```bibtex
-@article{{{ cookiecutter.author_name.split()[0].lower() }}{{ cookiecutter.year }},
-  title     = {{{ cookiecutter.paper_title }}},
-  author    = {{{ cookiecutter.author_name }}},
-  journal   = {},
-  year      = {{{ cookiecutter.year }}},
-  doi       = {10.5281/zenodo.XXXXXXX}
+{% raw %}
+@article{author-year,
+  title     = "{{ cookiecutter.paper_title }}",
+  author    = "{{ cookiecutter.author_name }}",
+  journal   = "",
+  year      = {{ cookiecutter.year }},
+  doi       = "10.5281/zenodo.XXXXXXX"
 }
+{% endraw %}
 ```
 
 ## License
