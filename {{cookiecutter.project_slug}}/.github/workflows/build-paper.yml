@@ -42,7 +42,7 @@ jobs:
             --mathjax \
             --toc \
             --output paper.html \
-            --metadata title="${{ cookiecutter.paper_title }}"
+            --metadata title="{{ cookiecutter.paper_title }}"
             
       - name: Build PDF
         run: |
@@ -53,7 +53,7 @@ jobs:
             --citeproc \
             --pdf-engine=xelatex \
             --output paper.pdf \
-            --metadata title="${{ cookiecutter.paper_title }}"
+            --metadata title="{{ cookiecutter.paper_title }}"
             
       - name: Setup GitHub Pages
         if: github.event_name != 'pull_request'

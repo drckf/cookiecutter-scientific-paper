@@ -1,3 +1,4 @@
+{% raw %}
 name: Distribute Paper
 
 on:
@@ -62,3 +63,4 @@ jobs:
       - name: Submit to registry
         run: |
           python .github/scripts/submit_to_registry.py
+{% endraw %}
